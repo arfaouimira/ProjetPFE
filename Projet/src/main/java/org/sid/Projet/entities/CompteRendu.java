@@ -1,6 +1,5 @@
 package org.sid.Projet.entities;
 
-import java.util.Date;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -31,7 +30,7 @@ public class CompteRendu extends ObjetPersistant {
 	}
 	
 	public CompteRendu(String message, String destinataire, String typeCampagne, Integer nombreEmail, Integer nombreSms,
-			Integer nombreAlerte, Date dateCreation, Date dateEnvoi, String statut) {
+			Integer nombreAlerte, String dateCreation, String dateEnvoi, String etat) {
 		super();
 		this.message = message;
 		this.destinataire = destinataire;
@@ -41,7 +40,7 @@ public class CompteRendu extends ObjetPersistant {
 		this.nombreAlerte = nombreAlerte;
 		this.dateCreation = dateCreation;
 		this.dateEnvoi = dateEnvoi;
-		this.Statut = statut;
+		this.etat = etat;
 	}
 
 	@Column(name="message", 	 nullable=false)
@@ -57,15 +56,18 @@ public class CompteRendu extends ObjetPersistant {
 	@Column(name="nombreAlerte", nullable=false)
 	private Integer nombreAlerte;
 	@Column(name="dateCreation", nullable=false)
-	private Date dateCreation;
+	private String dateCreation;
 	@Column(name="dateEnvoi",    nullable=false)
-	private Date dateEnvoi;
-	@Column(name="Statut",       nullable=false)
-	private String Statut;
+	private String dateEnvoi;
+	@Column(name="etat", nullable=false)
+	private String etat;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="code_camp", nullable=false)
-    private Campagne campagne;
+	
+	  @ManyToOne(fetch=FetchType.EAGER)
+	  
+	  @JoinColumn(name="code_camp", nullable=false) private Campagne campagne;
+	 
+	 
 
 	public String getMessage() {
 		return message;
@@ -115,36 +117,36 @@ public class CompteRendu extends ObjetPersistant {
 		this.nombreAlerte = nombreAlerte;
 	}
 
-	public Date getDateCreation() {
+	public String getDateCreation() {
 		return dateCreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
-	public Date getDateEnvoi() {
+	public String getDateEnvoi() {
 		return dateEnvoi;
 	}
 
-	public void setDateEnvoi(Date dateEnvoi) {
+	public void setDateEnvoi(String dateEnvoi) {
 		this.dateEnvoi = dateEnvoi;
 	}
 
-	public String getStatut() {
-		return Statut;
+	public String getEtat() {
+		return etat;
 	}
 
-	public void setStatut(String statut) {
-		this.Statut = statut;
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 	
-	public Campagne getCampagne() {
-		return campagne;
-	}
-
-	public void setCampagne(Campagne campagne) {
-		this.campagne = campagne;
-	}
+	
+	
+	  public Campagne getCampagne() { return campagne; }
+	  
+	  public void setCampagne(Campagne campagne) { this.campagne = campagne; }
+	 
+	 
 
 }

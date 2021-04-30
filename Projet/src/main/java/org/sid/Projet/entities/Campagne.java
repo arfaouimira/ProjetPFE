@@ -52,8 +52,10 @@ public abstract class Campagne extends ObjetPersistant {
 	@Column(name="dateEnvoi",    nullable=false)
 	private Date dateEnvoi;
 	
-	@OneToMany( targetEntity=CompteRendu.class, mappedBy="campagne" )
-    private List<CompteRendu> compteRendus = new ArrayList<>();
+	/*
+	 * @OneToMany( targetEntity=CompteRendu.class, mappedBy="campagne" ) private
+	 * List<CompteRendu> compteRendus = new ArrayList<>();
+	 */
 	
 	@OneToMany( targetEntity=Statistique.class, mappedBy="campagne" )
     private List<Statistique> statistiques = new ArrayList<>();
@@ -105,13 +107,12 @@ public abstract class Campagne extends ObjetPersistant {
 		this.dateEnvoi = dateEnvoi;
 	}
 
-	public List<CompteRendu> getCompteRendus() {
-		return compteRendus;
-	}
-
-	public void setCompteRendus(List<CompteRendu> compteRendus) {
-		this.compteRendus = compteRendus;
-	}
+	/*
+	 * public List<CompteRendu> getCompteRendus() { return compteRendus; }
+	 * 
+	 * public void setCompteRendus(List<CompteRendu> compteRendus) {
+	 * this.compteRendus = compteRendus; }
+	 */
 
 	public List<Statistique> getStatistiques() {
 		return statistiques;
